@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Searchbar from './Searchbar';
+import Loader from './Loader';
 
  class App extends Component {
   state = {
@@ -14,6 +15,7 @@ import Searchbar from './Searchbar';
     return (
       <div >
         <Searchbar onSubmit={this.handleFormSubmit} />
+        <Loader />
 
       </div>
     );
