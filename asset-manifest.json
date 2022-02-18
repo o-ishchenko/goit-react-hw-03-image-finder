@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/react-homework-template/static/css/main.7acaea2f.css",
-    "main.js": "/react-homework-template/static/js/main.4c9e2a57.js",
-    "static/js/787.6b7abe35.chunk.js": "/react-homework-template/static/js/787.6b7abe35.chunk.js",
-    "index.html": "/react-homework-template/index.html",
-    "main.7acaea2f.css.map": "/react-homework-template/static/css/main.7acaea2f.css.map",
-    "main.4c9e2a57.js.map": "/react-homework-template/static/js/main.4c9e2a57.js.map",
-    "787.6b7abe35.chunk.js.map": "/react-homework-template/static/js/787.6b7abe35.chunk.js.map"
+    "main.css": "/goit-react-hw-03-image-finder/static/css/main.cb177040.css",
+    "main.js": "/goit-react-hw-03-image-finder/static/js/main.18a3f552.js",
+    "static/js/787.9aaccccd.chunk.js": "/goit-react-hw-03-image-finder/static/js/787.9aaccccd.chunk.js",
+    "static/media/magnifier-1_icon-icons.com_56924.svg": "/goit-react-hw-03-image-finder/static/media/magnifier-1_icon-icons.com_56924.0300815547ab29ee9a9f.svg",
+    "index.html": "/goit-react-hw-03-image-finder/index.html",
+    "main.cb177040.css.map": "/goit-react-hw-03-image-finder/static/css/main.cb177040.css.map",
+    "main.18a3f552.js.map": "/goit-react-hw-03-image-finder/static/js/main.18a3f552.js.map",
+    "787.9aaccccd.chunk.js.map": "/goit-react-hw-03-image-finder/static/js/787.9aaccccd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7acaea2f.css",
-    "static/js/main.4c9e2a57.js"
+    "static/css/main.cb177040.css",
+    "static/js/main.18a3f552.js"
   ]
 }
