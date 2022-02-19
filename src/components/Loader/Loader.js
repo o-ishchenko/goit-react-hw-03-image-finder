@@ -8,6 +8,7 @@ function Loader() {
     width="80"
     color='#00BFFF'
     ariaLabel='loading'
+    
   />
 }
 

@@ -1,9 +1,11 @@
 import { Component } from 'react';
 import s from './Searchbar.module.css';
+import { toast } from 'react-toastify';
 
 class Searchbar extends Component {
   state = {
     searchQuery: '',
+    page: 1,
   };
 
   handleQueryChange = event => {
@@ -13,10 +15,10 @@ class Searchbar extends Component {
   handleSubmit = event => {
     event.preventDefault();
     if (this.state.searchQuery.trim() === '') {
-      alert('Enter your query for searching');
+      toast.info('Enter your query for searching');
       return;
     }
-    this.props.onSubmit(this.state.searchQuery);
+    this.props.onSubmit(this.state);
     this.setState({ searchQuery: '' });
   };
 
@@ -31,8 +33,8 @@ class Searchbar extends Component {
           <input
             className={s.input}
             type="text"
-            autocomplete="off"
-            autofocus
+            autoComplete="off"
+            autoFocus
             placeholder="Search images and photos"
             value={this.state.searchQuery}
             onChange={this.handleQueryChange}

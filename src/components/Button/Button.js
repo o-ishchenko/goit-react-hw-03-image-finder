@@ -1,7 +1,10 @@
 import React from 'react';
 import s from './Button.module.css';
 
-function Button() { }
+const Button = ({ onClick }) => (
+  <button type="button" className={s.button} onClick={onClick}>
+    Load more
+  </button>
+);
 
-
-export default Button
+export default Button;

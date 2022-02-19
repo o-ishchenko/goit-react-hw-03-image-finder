@@ -1,10 +1,10 @@
 import React from 'react';
+import s from './ImageGalleryItem.module.css';
 
+const ImageGalleryItem = ({ url, lagreUrl }) => (
+  <li className={s.item}>
+    <img className={s.image} src={url} alt="" />
+  </li>
+);
 
-const API_KEY = '24768000-69e119d8d67a6997f84a85579';
-const BASE_URL = 'https://pixabay.com/api/';
-
-function ImageGalleryItem() { }
-
-
-export default ImageGalleryItem
+export default ImageGalleryItem;
