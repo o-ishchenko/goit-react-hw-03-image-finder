@@ -5,7 +5,8 @@ import Searchbar from './Searchbar';
 import Loader from './Loader';
 import ImageGallery from './ImageGallery';
 import Button from './Button';
-import s from './App.module.css'
+import Modal from './Modal';
+import s from './App.module.css';
 
 const API_KEY = '24768000-69e119d8d67a6997f84a85579';
 const BASE_URL = 'https://pixabay.com/api/';
@@ -16,6 +17,8 @@ class App extends Component {
     data: [],
     loading: false,
     page: 0,
+    showModal: false,
+    largeImageURL: '',
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -24,21 +27,22 @@ class App extends Component {
     const prevQuery = prevState.searchQuery;
     const nextQuery = this.state.searchQuery;
 
-    if (prevPage !== nextPage || prevQuery !== nextQuery ) {
+    if (prevPage !== nextPage || prevQuery !== nextQuery) {
       this.setState({ loading: true });
       fetch(
         `${BASE_URL}?q=${this.state.searchQuery}&page=${this.state.page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`
       )
         .then(response => {
           if (!response.ok) {
-            throw Error ('Oops, there is no image with your search query')
+            throw Error('Oops, there is no image with your search query');
           }
           return response.json();
-         
         })
         .then(response => {
-          if (response.hits.length === 0) { 
-            toast.error('Sorry, there are no images matching your search query. Please try again.');
+          if (response.hits.length === 0) {
+            toast.error(
+              'Sorry, there are no images matching your search query. Please try again.'
+            );
             this.setState({ loading: false });
             return;
           }
@@ -51,22 +55,39 @@ class App extends Component {
     }
   }
 
-  handleFormSubmit = data => {
-    this.setState({ searchQuery: data.searchQuery, data: [], page: data.page });
+  handleFormSubmit = ({ searchQuery }) => {
+    this.setState({ searchQuery, data: [], page: 1 });
   };
   handleButtonClick = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
+  };
+  toggleModal = largeImageURL => {
+    this.setState(prevState => ({
+      showModal: !prevState.showModal,
+      largeImageURL: largeImageURL,
+    }));
   };
 
   render() {
     return (
       <div>
         <Searchbar onSubmit={this.handleFormSubmit} />
-        {this.state.data.length !== 0 && <ImageGallery data={this.state.data} />}
-        <div className={s.box}>
-        {this.state.loading && <Loader />}
-          {this.state.data.length !== 0 && <Button onClick={this.handleButtonClick} />}
+        {this.state.data.length !== 0 && (
+          <ImageGallery data={this.state.data} onClick={this.toggleModal} />
+        )}
+        <div className={s.centeredBox}>
+          {this.state.loading && <Loader />}
+          {this.state.data.length !== 0 && (
+            <Button onClick={this.handleButtonClick} />
+          )}
         </div>
+        {this.state.showModal && (
+          <Modal
+            largeImageURL={this.state.largeImageURL}
+            alt={this.state.searchQuery}
+            onClose={this.toggleModal}
+          />
+        )}
         <ToastContainer autoClose={1500} position="top-center" />
       </div>
     );

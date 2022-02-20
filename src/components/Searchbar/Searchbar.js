@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 class Searchbar extends Component {
   state = {
     searchQuery: '',
-    page: 1,
   };
 
   handleQueryChange = event => {
