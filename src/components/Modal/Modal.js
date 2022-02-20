@@ -40,6 +40,7 @@ class Modal extends Component {
 Modal.propTypes = {
   largeImageURL: PropTypes.string.isRequired,
   alt: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Modal;

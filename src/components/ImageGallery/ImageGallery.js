@@ -18,14 +18,8 @@ const ImageGallery = ({ data, onClick }) => (
 );
 
 ImageGallery.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      key: PropTypes.string.isRequired,
-      webformatURL: PropTypes.string.isRequired,
-      largeImageURL: PropTypes.string.isRequired,
-      alt: PropTypes.string,
-    })
-  ),
+  data: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ImageGallery;

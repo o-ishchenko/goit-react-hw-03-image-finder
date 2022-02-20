@@ -19,6 +19,7 @@ class App extends Component {
     page: 0,
     showModal: false,
     largeImageURL: '',
+    isVisible: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -39,6 +40,9 @@ class App extends Component {
           return response.json();
         })
         .then(response => {
+          if (response.totalHits - this.state.page * 12 < 12) {
+            this.setState({ isVisible: false });
+          }
           if (response.hits.length === 0) {
             toast.error(
               'Sorry, there are no images matching your search query. Please try again.'
@@ -56,7 +60,7 @@ class App extends Component {
   }
 
   handleFormSubmit = ({ searchQuery }) => {
-    this.setState({ searchQuery, data: [], page: 1 });
+    this.setState({ searchQuery, data: [], page: 1, isVisible: true });
   };
   handleButtonClick = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
@@ -77,7 +81,7 @@ class App extends Component {
         )}
         <div className={s.centeredBox}>
           {this.state.loading && <Loader />}
-          {this.state.data.length !== 0 && (
+          {this.state.isVisible && (
             <Button onClick={this.handleButtonClick} />
           )}
         </div>
